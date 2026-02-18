@@ -1,6 +1,7 @@
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Cursor from "./components/Cursor";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 export const metadata = {
   title: "Test",
@@ -11,9 +12,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className="bg-black text-white scroll-smooth">
-        <Cursor /> {/* Custom cursor */}
-        <Navbar />
-        {children}
+        <AppRouterCacheProvider>
+          <Cursor />
+          <Navbar />
+          {children}
+        </AppRouterCacheProvider>
       </body>
     </html>
   );

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { fadeIn, staggerContainer } from "./HeroMotion";
+import { Button } from "@mui/material";
 
 export default function Hero() {
   return (
@@ -12,26 +13,64 @@ export default function Hero() {
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <motion.p variants={fadeIn} className="text-sm text-gray-400 mb-4">
+        <motion.p
+          variants={fadeIn("up", "tween", 0.2, 1)}
+          className="text-sm text-gray-400 mb-4"
+        >
           ⭐⭐⭐⭐⭐ Trusted by 20+ brands
         </motion.p>
 
         <motion.h1
-          variants={fadeIn}
+          variants={fadeIn("up", "tween", 0.4, 1)}
           className="text-4xl md:text-6xl font-bold leading-tight"
         >
           Really cool videos,
           <br />
-          <span className="text-purple-500">edited & delivered in 48 hours.</span>
+          <span className="text-purple-500">
+            edited & delivered in 48 hours.
+          </span>
         </motion.h1>
 
-        <motion.p variants={fadeIn} className="mt-6 max-w-xl text-gray-400">
+        <motion.p
+          variants={fadeIn("up", "tween", 0.6, 1)}
+          className="mt-6 max-w-xl text-gray-400"
+        >
           Affordable, fast, human-powered video edits. Real editors, no AI fillers.
         </motion.p>
 
-        <motion.div variants={fadeIn} className="mt-10 flex gap-4 justify-center">
-          <button className="px-6 py-3 bg-purple-600 rounded-full">Book a call</button>
-          <button className="px-6 py-3 border border-gray-600 rounded-full">Learn more</button>
+        <motion.div
+          variants={fadeIn("up", "tween", 0.8, 1)}
+          className="mt-10 flex gap-4 justify-center"
+        >
+          <Button
+            variant="contained"
+            sx={{
+              borderRadius: "999px",
+              px: 3,
+              py: 1.5,
+              backgroundColor: "#7c3aed",
+              "&:hover": { backgroundColor: "#6d28d9" },
+            }}
+          >
+            Book a call
+          </Button>
+
+          <Button
+            variant="outlined"
+            sx={{
+              borderRadius: "999px",
+              px: 3,
+              py: 1.5,
+              color: "#e5e7eb",
+              borderColor: "#4b5563",
+              "&:hover": {
+                borderColor: "#7c3aed",
+                color: "#7c3aed",
+              },
+            }}
+          >
+            Learn more
+          </Button>
         </motion.div>
       </motion.div>
     </section>
