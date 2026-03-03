@@ -85,7 +85,7 @@ export default function MyCard() {
           Nail your Reels, TikToks, LinkedIn and Shorts to optimize engagement.
         </p>
 
-        <div className="mt-6 text-center">
+        <div className="mt-7 text-center">
           <button
             className="px-6 py-2 rounded-lg text-white"
             style={{
