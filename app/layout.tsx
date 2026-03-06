@@ -5,7 +5,10 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 export const metadata = {
   title: "ProjectAgency1",
-  description: "ProjectAgency1 provides web development, AI solutions, and digital services for businesses.",
+  description: "ProjectAgency1 provides web development and AI services.",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
