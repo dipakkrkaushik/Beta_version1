@@ -1,5 +1,27 @@
 "use client";
 
+export const metadata = {
+  title: "Digital Marketing Agency in NCR",
+  description:
+    "Best digital marketing agency in NCR offering SEO, social media marketing, website development, branding, and business growth solutions.",
+  keywords: [
+    "Digital Marketing Agency NCR",
+    "Best Digital Marketing Agency NCR",
+    "SEO Services NCR",
+    "Social Media Marketing NCR",
+    "Website Development NCR",
+    "Google Ads Agency NCR",
+    "Content Marketing NCR",
+    "Online Marketing Services NCR",
+    "Lead Generation Services",
+    "Performance Marketing Agency",
+    "Digital Advertising Agency",
+    "Startup Marketing Services",
+    "Brand Promotion Services",
+    "Business Growth Marketing",
+  ],
+};
+
 import { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import Clients from "./components/Clients";
@@ -7,11 +29,10 @@ import Services from "./components/Services";
 import Testimonials from "./components/Testimonials";
 import Newsletter from "./components/Newsletter";
 import Footer from "./components/Footer";
-import PricingCard from "./components/Card"; // ✅ custom card
-import FAQs from "./components/FAQs"; // 👈 add this
+import PricingCard from "./components/Card";
+import FAQs from "./components/FAQs";
 import ClickGame from "./components/ClickGame";
 import WhyChooseUs from "./components/WhyChooseUs";
-
 
 import { motion } from "framer-motion";
 
@@ -89,10 +110,9 @@ export default function Home() {
       <Testimonials />
       <Services />
 
-      {/* ✅ Your Custom Pricing Card Component */}
       <PricingCard />
 
-      {/* ================= ULTRA ZEN SECTION ================= */}
+      {/* ULTRA ZEN SECTION */}
       <section className="relative py-32 bg-black overflow-hidden">
         {orbs.map((orb, i) => (
           <motion.div
@@ -158,7 +178,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* ================= CONTACT FORM ================= */}
+      {/* CONTACT FORM */}
       <section className="bg-gray-100 py-16">
         <div className="max-w-2xl mx-auto px-6">
           <Typography
@@ -221,12 +241,12 @@ export default function Home() {
           </Box>
         </div>
       </section>
-<ClickGame />
-<WhyChooseUs />
-<Newsletter />
-<FAQs />
-<Footer />
 
-</main>
-);
+      <ClickGame />
+      <WhyChooseUs />
+      <Newsletter />
+      <FAQs />
+      <Footer />
+    </main>
+  );
 }
