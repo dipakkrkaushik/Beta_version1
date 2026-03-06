@@ -12,6 +12,7 @@ import FAQs from "./components/FAQs"; // 👈 add this
 import ClickGame from "./components/ClickGame";
 import WhyChooseUs from "./components/WhyChooseUs";
 
+
 import { motion } from "framer-motion";
 
 import {
@@ -222,9 +223,10 @@ export default function Home() {
       </section>
 <ClickGame />
 <WhyChooseUs />
-      <Newsletter />
-        <FAQs /> 
-      <Footer />
-    </main>
-  );
+<Newsletter />
+<FAQs />
+<Footer />
+
+</main>
+);
 }
