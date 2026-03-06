@@ -4,8 +4,8 @@ import Cursor from "./components/Cursor";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 export const metadata = {
-  title: "Test",
-  description: "Test",
+  title: "ProjectAgency1",
+  description: "ProjectAgency1 provides web development, AI solutions, and digital services for businesses.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
