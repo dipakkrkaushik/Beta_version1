@@ -4,10 +4,10 @@ import Cursor from "./components/Cursor";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 
 export const metadata = {
-  title: "ProjectAgency1",
-  description: "ProjectAgency1 provides web development and AI services.",
+  title: "Digital Agency",
+  description: "Digital agency provides web development and AI services.",
   icons: {
-    icon: "/favicon.ico",
+    icon: "/components/abc.png",
   },
 };
 
