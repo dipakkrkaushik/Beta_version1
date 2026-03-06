@@ -14,7 +14,7 @@ export default function Navbar() {
 
         {/* Logo */}
         <span className="font-bold text-xl text-white">
-          ⚡ DipVision
+          ⚡ VisionDip
         </span>
 
         {/* Desktop Menu */}
