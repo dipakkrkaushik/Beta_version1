@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h2 className="text-white text-2xl font-bold mb-4">
-              VentoVeda
+        VisionDip
             </h2>
             <p className="text-sm leading-relaxed">
               Building immersive digital experiences with
@@ -39,8 +39,8 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">
               Get In Touch
             </h3>
-            <p className="text-sm">contact@ventoveda.com</p>
-            <p className="text-sm mt-2">Gurgaon, India</p>
+            <p className="text-sm">info@visiondip.com</p>
+            <p className="text-sm mt-2">Hauskhas,Delhi, India</p>
 
             {/* Social Icons */}
             <div className="flex gap-4 mt-4">
@@ -54,7 +54,7 @@ export default function Footer() {
 
         {/* Bottom Section */}
         <div className="border-t border-gray-800 mt-12 pt-6 text-center text-sm">
-          © {new Date().getFullYear()} VentoVeda. All rights reserved.
+          © {new Date().getFullYear()} VisionDip. All rights reserved.
         </div>
 
       </div>

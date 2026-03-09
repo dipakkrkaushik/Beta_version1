@@ -12,6 +12,8 @@ import FAQs from "./components/FAQs";
 import ClickGame from "./components/ClickGame";
 import WhyChooseUs from "./components/WhyChooseUs";
 
+import ContactForm from "./components/ContactForm"; // ✅ NEW CONTACT FORM COMPONENT
+
 import { motion } from "framer-motion";
 
 import {
@@ -185,7 +187,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* CONTACT FORM */}
+      {/* CONTACT FORM
       <section className="bg-gray-100 py-16">
         <div className="max-w-2xl mx-auto px-6">
           <Typography
@@ -249,11 +251,12 @@ export default function Home() {
             </Box>
           )}
         </div>
-      </section>
+      </section> */}
 
       <ClickGame />
       <WhyChooseUs />
       <Newsletter />
+      <ContactForm /> 
 
       {/* ADD ID FOR SCROLL */}
       <section id="faqs">
