@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import Cursor from "./components/Cursor";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { SEO } from "../seo/seo";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: SEO.global.title,
@@ -30,6 +31,8 @@ export default function RootLayout({
           <Navbar />
           {children}
         </AppRouterCacheProvider>
+
+        <Analytics />
       </body>
     </html>
   );
