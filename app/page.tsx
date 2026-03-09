@@ -1,26 +1,5 @@
 "use client";
 
-export const metadata = {
-  title: "Digital Marketing Agency in NCR",
-  description:
-    "Best digital marketing agency in NCR offering SEO, social media marketing, website development, branding, and business growth solutions.",
-  keywords: [
-    "Digital Marketing Agency NCR",
-    "Best Digital Marketing Agency NCR",
-    "SEO Services NCR",
-    "Social Media Marketing NCR",
-    "Website Development NCR",
-    "Google Ads Agency NCR",
-    "Content Marketing NCR",
-    "Online Marketing Services NCR",
-    "Lead Generation Services",
-    "Performance Marketing Agency",
-    "Digital Advertising Agency",
-    "Startup Marketing Services",
-    "Brand Promotion Services",
-    "Business Growth Marketing",
-  ],
-};
 
 import { useState, useEffect } from "react";
 import Hero from "./components/Hero";

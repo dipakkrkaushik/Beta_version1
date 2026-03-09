@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { SEO } from "../../seo/seo"; // ✅ SEO IMPORT ADDED
 
 const plans = [
   {
-    name: "Basic",
+    name: SEO.card1.title, // ✅ SEO TITLE
+    description: SEO.card1.description, // ✅ SEO DESCRIPTION
     price: 19,
     features: [
       "Access all basic resources",
@@ -16,6 +18,7 @@ const plans = [
   },
   {
     name: "Pro",
+    description: "Advanced digital marketing services for growing businesses.",
     price: 25,
     popular: true,
     features: [
@@ -26,7 +29,8 @@ const plans = [
     ],
   },
   {
-    name: "Team",
+    name: SEO.card2.title, // ✅ SEO TITLE
+    description: SEO.card2.description, // ✅ SEO DESCRIPTION
     price: 30,
     features: [
       "All Pro features",
@@ -41,7 +45,6 @@ export default function CardPage() {
   const [annual, setAnnual] = useState(false);
   const [orbs, setOrbs] = useState<any[]>([]);
 
-  // Generate floating orbs (client-safe)
   useEffect(() => {
     const generated = [...Array(5)].map(() => ({
       top: `${Math.random() * 80}%`,
@@ -61,7 +64,6 @@ export default function CardPage() {
   return (
     <div className="relative min-h-screen flex flex-col items-center py-20 px-6 text-white overflow-hidden bg-black">
       
-      {/* 🔥 Animated Gradient Mesh */}
       <motion.div
         className="absolute inset-0 opacity-40"
         animate={{ backgroundPosition: ["0% 0%", "100% 100%"] }}
@@ -73,7 +75,6 @@ export default function CardPage() {
         }}
       />
 
-      {/* 🔥 Floating Glow Orbs */}
       {orbs.map((orb, i) => (
         <motion.div
           key={i}
@@ -97,7 +98,6 @@ export default function CardPage() {
         />
       ))}
 
-      {/* 🔥 Subtle Grid */}
       <div
         className="absolute inset-0 opacity-10"
         style={{
@@ -109,13 +109,11 @@ export default function CardPage() {
         }}
       />
 
-      {/* 🌟 Content */}
       <div className="relative z-10 w-full max-w-6xl">
         <h1 className="text-4xl font-bold mb-6 text-center">
           Pricing Plans
         </h1>
 
-        {/* Toggle */}
         <div className="flex justify-center mb-16">
           <div className="flex items-center bg-white/10 backdrop-blur-md p-1 rounded-full border border-white/20">
             <button
@@ -137,7 +135,6 @@ export default function CardPage() {
           </div>
         </div>
 
-        {/* Cards */}
         <div className="grid md:grid-cols-3 gap-10">
           {plans.map((plan) => (
             <motion.div
@@ -153,9 +150,15 @@ export default function CardPage() {
                 </div>
               )}
 
-              <h2 className="text-2xl font-semibold mb-4 text-center">
+              <h2 className="text-2xl font-semibold mb-2 text-center">
                 {plan.name}
               </h2>
+
+              {plan.description && (
+                <p className="text-gray-300 text-sm text-center mb-4">
+                  {plan.description}
+                </p>
+              )}
 
               <div className="text-center mb-6">
                 <span className="text-4xl font-bold">
