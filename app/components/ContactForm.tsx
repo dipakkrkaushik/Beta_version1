@@ -1,6 +1,8 @@
 "use client";
-import { useState, useEffect } from "react"; // ✅ include useEffect
+
+import { useState, useEffect } from "react";
 import { TextField, Button, Box, Typography } from "@mui/material";
+import { supabase } from "./supabaseClient"; // ✅ import client
 
 export default function ContactForm() {
   const [name, setName] = useState("");
@@ -9,29 +11,29 @@ export default function ContactForm() {
   const [status, setStatus] = useState("");
   const [mounted, setMounted] = useState(false);
 
-  // ✅ useEffect now works
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  useEffect(() => setMounted(true), []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("Sending...");
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, message }),
-      });
+      const { error } = await supabase.from("contacts").insert([
+        {
+          name,
+          email,
+          message,
+        },
+      ]);
 
-      if (res.ok) {
+      if (error) {
+        console.error(error);
+        setStatus("Failed to send message.");
+      } else {
         setStatus("Message sent successfully!");
         setName("");
         setEmail("");
         setMessage("");
-      } else {
-        setStatus("Failed to send message.");
       }
     } catch (err) {
       console.error(err);
