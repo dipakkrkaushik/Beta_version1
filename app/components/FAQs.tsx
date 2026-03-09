@@ -55,7 +55,8 @@ export default function FAQs() {
   };
 
   return (
-    <section className="relative py-24 px-6 text-white overflow-hidden bg-black">
+    // ✅ Added id="faqs" for smooth scrolling
+    <section id="faqs" className="relative py-24 px-6 text-white overflow-hidden bg-black">
 
       {/* Animated Gradient Background */}
       <motion.div

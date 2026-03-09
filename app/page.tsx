@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useState, useEffect } from "react";
 import Hero from "./components/Hero";
 import Clients from "./components/Clients";
@@ -41,7 +40,31 @@ export default function Home() {
     }[]
   >([]);
 
+  const [mounted, setMounted] = useState(false); // ✅ hydration fix
+
   useEffect(() => {
+    setMounted(true); // mark as client-side mounted
+  }, []);
+
+  // Smooth scroll on page load if hash exists
+  useEffect(() => {
+    const hash = window.location.hash.replace("#", "");
+    if (hash) {
+      const el = document.getElementById(hash);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+        // Remove hash from URL so browser doesn't jump
+        history.replaceState(null, "", " ");
+      }
+    }
+  }, []);
+
+  // Generate floating orbs (client-only)
+  useEffect(() => {
+    if (!mounted) return;
+
     const generated = [...Array(6)].map((_, i) => ({
       top: `${Math.random() * 100}%`,
       left: `${Math.random() * 100}%`,
@@ -55,7 +78,7 @@ export default function Home() {
     }));
 
     setOrbs(generated);
-  }, []);
+  }, [mounted]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -87,32 +110,37 @@ export default function Home() {
       <Hero />
       <Clients />
       <Testimonials />
-      <Services />
+
+      {/* ADD ID FOR SCROLL */}
+      <section id="services">
+        <Services />
+      </section>
 
       <PricingCard />
 
       {/* ULTRA ZEN SECTION */}
       <section className="relative py-32 bg-black overflow-hidden">
-        {orbs.map((orb, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-72 h-72 rounded-full blur-3xl opacity-20"
-            style={{
-              background: orb.bg,
-              top: orb.top,
-              left: orb.left,
-            }}
-            animate={{
-              x: [0, orb.moveX, 0],
-              y: [0, orb.moveY, 0],
-            }}
-            transition={{
-              duration: orb.duration,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        ))}
+        {mounted &&
+          orbs.map((orb, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-72 h-72 rounded-full blur-3xl opacity-20"
+              style={{
+                background: orb.bg,
+                top: orb.top,
+                left: orb.left,
+              }}
+              animate={{
+                x: [0, orb.moveX, 0],
+                y: [0, orb.moveY, 0],
+              }}
+              transition={{
+                duration: orb.duration,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+          ))}
 
         <motion.div
           initial={{ opacity: 0, y: 120 }}
@@ -168,63 +196,70 @@ export default function Home() {
             Contact Us
           </Typography>
 
-          <Box
-            component="form"
-            onSubmit={handleSubmit}
-            sx={{
-              backgroundColor: "white",
-              padding: 3,
-              borderRadius: 2,
-              boxShadow: 2,
-              display: "flex",
-              flexDirection: "column",
-              gap: 2,
-            }}
-          >
-            <TextField
-              label="Your Name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              fullWidth
-            />
+          {mounted && (
+            <Box
+              component="form"
+              onSubmit={handleSubmit}
+              sx={{
+                backgroundColor: "white",
+                padding: 3,
+                borderRadius: 2,
+                boxShadow: 2,
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+              }}
+            >
+              <TextField
+                label="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+                fullWidth
+              />
 
-            <TextField
-              label="Your Email"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              fullWidth
-            />
+              <TextField
+                label="Your Email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                fullWidth
+              />
 
-            <TextField
-              label="Your Message"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              required
-              fullWidth
-              multiline
-              rows={4}
-            />
+              <TextField
+                label="Your Message"
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                required
+                fullWidth
+                multiline
+                rows={4}
+              />
 
-            <Button type="submit" variant="contained">
-              Send Message
-            </Button>
+              <Button type="submit" variant="contained">
+                Send Message
+              </Button>
 
-            {status && (
-              <Typography align="center" sx={{ mt: 1 }}>
-                {status}
-              </Typography>
-            )}
-          </Box>
+              {status && (
+                <Typography align="center" sx={{ mt: 1 }}>
+                  {status}
+                </Typography>
+              )}
+            </Box>
+          )}
         </div>
       </section>
 
       <ClickGame />
       <WhyChooseUs />
       <Newsletter />
-      <FAQs />
+
+      {/* ADD ID FOR SCROLL */}
+      <section id="faqs">
+        <FAQs />
+      </section>
+
       <Footer />
     </main>
   );

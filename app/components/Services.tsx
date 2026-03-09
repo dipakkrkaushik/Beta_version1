@@ -25,6 +25,7 @@ export default function MyCard() {
 
       {/* ================= CARD 1: YOUTUBE VIDEOS (2) ================= */}
       <div
+        id="youtube-videos" // ✅ Added id
         className="p-8 rounded-2xl shadow-lg"
         style={{
           background: "linear-gradient(135deg, #111, #1a1a1a)",
@@ -51,7 +52,6 @@ export default function MyCard() {
           </button>
         </div>
 
-        {/* 2 Videos Grid */}
         <div className="mt-8 grid grid-cols-2 gap-4">
           {youtubeVideos.map((video) => (
             <div
@@ -71,6 +71,7 @@ export default function MyCard() {
 
       {/* ================= CARD 2: SHORT FORM VIDEOS (6) ================= */}
       <div
+        id="short-form-videos" // ✅ Added id
         className="p-8 rounded-2xl shadow-lg"
         style={{
           background: "linear-gradient(135deg, #111, #1a1a1a)",
@@ -97,7 +98,6 @@ export default function MyCard() {
           </button>
         </div>
 
-        {/* 6 Videos Grid */}
         <div className="mt-8 grid grid-cols-3 gap-4">
           {shortFormVideos.map((video) => (
             <div
@@ -117,6 +117,7 @@ export default function MyCard() {
 
       {/* ================= CARD 3: PARALLEL 2 VIDEOS ================= */}
       <div
+        id="video-showcase" // ✅ Added id
         className="p-8 rounded-2xl shadow-lg"
         style={{
           background: "linear-gradient(135deg, #111, #1a1a1a)",
@@ -143,7 +144,6 @@ export default function MyCard() {
           </button>
         </div>
 
-        {/* Parallel Videos */}
         <div className="mt-8 grid grid-cols-2 gap-4">
           {parallelVideos.map((video) => (
             <div

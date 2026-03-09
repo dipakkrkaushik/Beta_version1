@@ -2,9 +2,23 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
+import { useRouter } from "next/navigation"; // ✅ Step 1: import
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const router = useRouter(); // ✅ Step 2: call useRouter
+
+  // ✅ Step 3: define function inside component
+  const scrollOrNavigate = (id: string, path = "/") => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      setOpen(false);
+    } else {
+      router.push(`${path}#${id}`);
+    }
+  };
 
   return (
     <>
@@ -19,9 +33,21 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 text-sm text-gray-300">
-          <li className="hover:text-white cursor-pointer">Short-form</li>
-          <li className="hover:text-white cursor-pointer">Services</li>
-          <li className="hover:text-white cursor-pointer">FAQs</li>
+          <li className="hover:text-white cursor-pointer">
+            <Link href="/short-form">Short-form</Link>
+          </li>
+          <li
+            className="hover:text-white cursor-pointer"
+            onClick={() => scrollOrNavigate("services", "/")}
+          >
+            Services
+          </li>
+          <li
+            className="hover:text-white cursor-pointer"
+            onClick={() => scrollOrNavigate("faqs", "/")}
+          >
+            FAQs
+          </li>
         </ul>
 
         {/* Desktop Button */}
@@ -60,13 +86,25 @@ export default function Navbar() {
             w-[90%] bg-black/90 backdrop-blur-xl rounded-2xl 
             p-6 flex flex-col gap-6 text-center text-white z-40"
           >
-            <span className="hover:text-purple-400 cursor-pointer">
+            <Link
+              href="/short-form"
+              className="hover:text-purple-400 cursor-pointer"
+              onClick={() => setOpen(false)}
+            >
               Short-form
-            </span>
-            <span className="hover:text-purple-400 cursor-pointer">
+            </Link>
+
+            <span
+              className="hover:text-purple-400 cursor-pointer"
+              onClick={() => scrollOrNavigate("services", "/")}
+            >
               Services
             </span>
-            <span className="hover:text-purple-400 cursor-pointer">
+
+            <span
+              className="hover:text-purple-400 cursor-pointer"
+              onClick={() => scrollOrNavigate("faqs", "/")}
+            >
               FAQs
             </span>
 
